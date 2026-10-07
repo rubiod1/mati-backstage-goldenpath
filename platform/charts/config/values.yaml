@@ -24,5 +24,6 @@ pilot:
   securityGroupsForPods: false
   postgresVersion: '16.15'
   smallInstanceClass: db.t4g.micro
+  mediumInstanceClass: db.t3.small
 stage: all
 awsResources: true

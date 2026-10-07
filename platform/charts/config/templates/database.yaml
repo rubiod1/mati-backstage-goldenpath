@@ -120,7 +120,7 @@ spec:
                 toFieldPath: spec.forProvider.instanceClass
                 transforms:
                   - type: map
-                    map: {pequena: {{ .Values.pilot.smallInstanceClass | quote }}, mediana: db.t4g.small}
+                    map: {pequena: {{ .Values.pilot.smallInstanceClass | quote }}, mediana: {{ .Values.pilot.mediumInstanceClass | quote }}}
               - type: ToCompositeFieldPath
                 fromFieldPath: status.atProvider.address
                 toFieldPath: status.databaseEndpoint
