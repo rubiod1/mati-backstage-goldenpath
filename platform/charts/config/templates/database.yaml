@@ -52,7 +52,7 @@ spec:
               apiVersion: rds.aws.m.upbound.io/v1beta1
               kind: Instance
               spec:
-                managementPolicies: [Observe, Create, Update, LateInitialize]
+                managementPolicies: [Observe, Create, Update]
                 providerConfigRef: {name: goldenpath, kind: ClusterProviderConfig}
                 forProvider:
                   region: {{ .Values.aws.region }}
@@ -83,6 +83,12 @@ spec:
               - type: FromCompositeFieldPath
                 fromFieldPath: metadata.name
                 toFieldPath: metadata.annotations[crossplane.io/external-name]
+                transforms:
+                  - type: string
+                    string: {type: Format, fmt: '{{ .Values.aws.resourcePrefix }}-%s'}
+              - type: FromCompositeFieldPath
+                fromFieldPath: metadata.name
+                toFieldPath: spec.forProvider.identifier
                 transforms:
                   - type: string
                     string: {type: Format, fmt: '{{ .Values.aws.resourcePrefix }}-%s'}
