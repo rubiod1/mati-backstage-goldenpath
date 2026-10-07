@@ -1,0 +1,11 @@
+apiVersion: platform.goldenpath.io/v1alpha1
+kind: PostgreSQLInstance
+metadata:
+  name: gp-piloto-pagos
+  namespace: equipo-piloto
+  labels:
+    platform.goldenpath.io/owner: piloto
+    platform.goldenpath.io/cost-center: mati-platform
+    backstage.io/kubernetes-id: gp-piloto-pagos
+spec:
+  size: pequena
