@@ -71,7 +71,7 @@ spec:
     - from:
         - source:
             namespaces: [{{ .Values.pilot.namespace | quote }}, istio-system]
-{{- if .Values.awsResources }}
+{{- if and .Values.awsResources .Values.pilot.securityGroupsForPods }}
 ---
 apiVersion: vpcresources.k8s.aws/v1beta1
 kind: SecurityGroupPolicy

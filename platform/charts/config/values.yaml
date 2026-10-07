@@ -20,6 +20,8 @@ pilot:
   subnetGroup: goldenpath-dev-pilot
   databaseSecurityGroup: sg-0123456789abcdef0
   workloadSecurityGroup: sg-0123456789abcdef1
+  # Security Groups for Pods requiere nodos con ENI de rama (no t3). Activar solo con m5/c5/r5 o similar.
+  securityGroupsForPods: false
   postgresVersion: '16.15'
   smallInstanceClass: db.t4g.micro
 stage: all
