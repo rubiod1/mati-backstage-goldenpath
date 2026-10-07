@@ -83,6 +83,16 @@ variable "pilot_small_database_instance_class" {
   }
 }
 
+variable "pilot_medium_database_instance_class" {
+  description = "Class for the piloto mediana contract, propagated to Crossplane and its IAM permissions."
+  type        = string
+  default     = "db.t4g.small"
+  validation {
+    condition     = contains(["db.t4g.small", "db.t3.small"], var.pilot_medium_database_instance_class)
+    error_message = "The mediana size must use db.t4g.small or the db.t3.small capacity fallback."
+  }
+}
+
 variable "final_snapshot_suffix" {
   description = "Unique final snapshot suffix for this lifecycle."
   type        = string

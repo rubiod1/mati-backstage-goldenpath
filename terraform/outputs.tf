@@ -15,6 +15,6 @@ output "platform_configuration" {
     githubSecretArn = aws_secretsmanager_secret.github.arn
     backstage       = { databaseHost = module.backstage_database.endpoint, databaseSecretArn = module.backstage_database.master_secret_arn, image = "${module.ecr.repository_urls["${var.resource_prefix}/backstage"]}:v1" }
     serviceImage    = "${module.ecr.repository_urls["${var.resource_prefix}/service-v0"]}:v1"
-    pilot           = { namespace = "equipo-piloto", subnetGroup = aws_db_subnet_group.pilot.name, databaseSecurityGroup = aws_security_group.pilot_database.id, workloadSecurityGroup = aws_security_group.pilot_workloads.id, postgresVersion = var.postgres_engine_version, smallInstanceClass = var.pilot_small_database_instance_class }
+    pilot           = { namespace = "equipo-piloto", subnetGroup = aws_db_subnet_group.pilot.name, databaseSecurityGroup = aws_security_group.pilot_database.id, workloadSecurityGroup = aws_security_group.pilot_workloads.id, postgresVersion = var.postgres_engine_version, smallInstanceClass = var.pilot_small_database_instance_class, mediumInstanceClass = var.pilot_medium_database_instance_class }
   }
 }
